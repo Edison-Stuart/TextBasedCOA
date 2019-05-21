@@ -6,25 +6,24 @@ answer_B = ['B', 'b']
 answer_C = ['C', 'c']
 yes = ['Y', 'y', 'Yes', 'yes']
 no = ['N', 'n', 'No', 'no']
-funeral_names = ['Mom', 'mom', 'Aunt', 'aunt', 'uncle', 'Uncle', 'dog', 'Dog', 'Cat', 'cat', 'Dad', 'dad'
-                 'Brother', 'brother', 'Sister', 'sister', 'Grandma', 'grandma', 'grandpa', 'Grandpa']
-
+funeral_names = ['mom', 'aunt', 'uncle', 'dog', 'cat', 'dad', 'brother', 'sister', 'grandma', 'grandpa']
 
 #  objects to grab
+
 toy_pokeball = 0
 Baseball_Bat = 0
 Golf_Club = 0
 Molotov = 0
 Pride_Flag = 0
 
-required = "\nUse only A, B, or C\n"  # if use input is wrong
+required = "\nUse only A, B, or C\n"  # if user input is wrong
 required_2 = '\nUse only Yes or No\n'
 
 
 def intro():
     print('One day after school you are walking home when something familiar on the '
           'ground catches your eye, \nwhen you get closer to see it, you realize why it '
-          'was familiar to you. It was a small toy Pokeball, like from your childhood.\n '
+          'was familiar to you. It was a small toy Pokeball, how odd\n '
           'Do you want to pick it up? Y/N')
     choice = input('>>> ')
     if choice in yes:
@@ -44,8 +43,21 @@ def intro():
 
 
 def option_home():
-    print('When you got back to your house you were so excited to show your sister the pokeball that you '
-          'forgot to lock your door')
+    if toy_pokeball == 1:
+        print('When you got back to your house you were so excited to put your new pokeball on your shelf that you '
+              'forgot to lock your door')
+        time.sleep(1)
+    print('After a few hours of doing homework and studying in your room, you hear a crash coming from downstairs')
+    print('You consider your options before acting, you could go downstairs to see what\'s happening '
+          'or you could just stay in your room, where it\'s safe.')
+    print('Would you like to go and check out the noise? Y/N')
+    choice = input('>>> ')
+    if choice in yes:
+        option_battle()
+    elif choice in no:
+        option_room()
+    else:
+        print(required_2)
 
 
 def option_call():
@@ -61,7 +73,7 @@ def option_call():
         option_golf()
     elif choice in answer_B:
         print("You thank him for offering but tell him that you aren't up for it today\n")
-        option_home_2()
+        option_home()
     elif choice in answer_C:
         print('')
         option_excuse()
@@ -87,7 +99,7 @@ def option_funeral():
         time.sleep(1)
         print("Good, you don't need Austin anyway. He was probably planning on murdering you or something\n"
               "he definitely seems shifty sometimes\n")
-        option_home_2()
+        option_home()
     else:  # if the input is not in the list
         print('"I don\'t know about that, sounds kind of fishy to me"\n')
         print('Ah heck, he didn\'t believe you, your embarrassment is immeasurable for you have been found\n'
@@ -115,21 +127,17 @@ def option_excuse():
         print('Austin tells you that he understands and wishes you a good day')
         time.sleep(1)
         print('You continue on your way\n')
-        option_home_2()
+        option_home()
     elif choice in answer_B:
         print('')
         option_funeral()
     elif choice in answer_C:
         print("Austin says that it's okay and that he will see you tomorrow at school\n")
-        option_home_2()
+        option_home()
     else:
         print(required)
         print('')
         option_excuse()
-
-
-def option_home_2():
-    print('on your walk home you noticed that the streets were particularly empty')
 
 
 intro()
